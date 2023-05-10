@@ -4,4 +4,4 @@ https://github.com/zlaabsi/adversarial-backdoor-attack/blob/main/animation/demo_
 
 
 
-[](animation/demo_attack.mp4)
+[](/animation/demo_attack.mp4)
