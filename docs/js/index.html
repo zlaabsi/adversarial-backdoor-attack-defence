@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Adversarial/Backdoor Models </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Break neural networks in your browser.">
+    <link rel="shortcut icon" href="data/favicon.ico" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C02BRW1FMK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C02BRW1FMK');
+    </script>
+  </head>
+  <body>
+    <header>
+      
+      <img src="img/logo-acelys.png" alt="logo acelys">
+      <div id="header" class="row" style="width: 100%;margin-left: 30px;">
+        <div id="logo" class="one-half column"><a href="."><h1>Adversarial/Backdoor Models</h1></a></div>
+      </div>
+  </header>
+  <main style="margin-top: 20px;">
+    <div class="container">
+       
+      
+
+    <div id="dashboard">
+        <h2 style="text-align: center;">Simulation d'une attaque</h2>
+
+        <div class="row border-bottom">
+          <span id="select-model-label" >Sélectionner un modèle:&nbsp;</span>
+          <select id="select-model" style="color:white" >
+            <option value="" style="color:black;" selected disabled>Sélectionner un modèle</option>
+            <option value="mnist" style="color:black;"  >MNIST (digit recognition)</option>
+            <option value="gtsrb" style="color:black;">GTSRB (street sign recognition)</option>
+            <option value="cifar" style="color:black;">CIFAR-10 (object recognition, small)</option>
+            <option value="imagenet" style="color:black;">ImageNet (object recognition, large)</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="one-half column border-right">
+            <div id="original-image-overlay" class="overlay"></div>
+            <h5 class="center">Image originale</h5>
+          </div>
+          <div class="one-half column">
+            <div id="adversarial-image-overlay" class="overlay"></div>
+            <h5 class="center"> Image "Adversarial"</h5>
+          </div>
+        </div>
+
+        <div class="row border-bottom">
+          <div class="one-half column split border-right">
+            <div id="original-canvas-overlay" class="overlay"></div>
+            <div class="splitleft61">
+              <canvas id="original" class="tableimg" width="224" height="224"></canvas>
+            </div>
+            <div class="splitright39">
+              <button id="next-image">Image Suivante ⟳</button>
+            </div>
+          </div>
+
+          <div class="one-half column split">
+            <div id="adversarial-canvas-overlay" class="overlay"></div>
+            <div class="splitleft55">
+              <canvas id="adversarial" class="tableimg" width="224" height="224"></canvas>
+              <canvas id="adversarial-noise" class="tableimg" width="224" height="224"></canvas>
+            </div>
+            <div class="splitright45">
+              <label for="select-target" >Transformer l'image en:</label>
+              <select id="select-target" style="color: white;" class="u-full-width" data-model="mnist">
+                <option style="color: black !important;" value="0">0</option>
+                <option style="color: black !important;" value="1">1</option>
+                <option style="color: black;" value="2">2</option>
+                <option style="color: black;" value="3">3</option>
+                <option style="color: black;" value="4">4</option>
+                <option style="color: black;" value="5">5</option>
+                <option style="color: black;" value="6">6</option>
+                <option style="color: black;" value="7">7</option>
+                <option style="color: black;" value="8">8</option>
+                <option style="color: black;" value="9">9</option>
+              </select>
+
+              <label for="select-attack">Sélectionner une attaque:</label>
+              <select id="select-attack" class="u-full-width" style="color: white;">
+                <option value="cw" style="color: black !important;">Carlini & Wagner (la plus efficace)</option>
+                <option value="jsma" style="color: black !important;">Jacobian-based Saliency Map Attack (efficace)</option>
+                <option value="jsmaOnePixel" style="color: black !important;">Jacobian-based Saliency Map Attack 1-Pixel (efficace)</option>
+                <option value="bimTargeted" style="color: black !important;">Basic Iterative Method (efficace)</option>
+                <option value="fgsmTargeted" style="color: black !important;">Fast Gradient Sign Method (faible)</option>
+              </select>
+
+              <div class="center">
+                <button id="generate-adv" class="button-primary">Générer</button>
+                <div id="latency-msg">This will take a few seconds.</div>
+                <div id="difference">Voyez -vous la différence? <a id="view-noise">Voir le bruit.</a></div>
+                <div id="difference-noise">Bruit est visible: <a id="view-image">Voir l'image </a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row center" style="display:flex;"> <!-- The flex here keeps the child columns the same height -->
+          <div class="one-half column border-right">
+            <div id="original-prediction-overlay" class="overlay"></div>
+            <h5>Prédiction</h5>
+            <button id="predict-original" class="button-primary">Réseaux de neuronnes lancés</button>
+            <div id="prediction"></div>
+            <div id="prediction-status"></div>
+          </div>
+          <div class="one-half column">
+            <div id="adversarial-prediction-overlay" class="overlay"></div>
+            <h5>Prédiction</h5>
+            <button id="predict-adv" class="button-primary" disabled>cliquer sur "Générer"</button>
+            <div id="prediction-adv"></div>
+            <div id="prediction-adv-status"></div>
+          </div>
+        </div>
+    </div >
+    <hr>
+
+
+
+     <div id="dashboard">
+      <h2 style="text-align: center;">Simulation d'une défense</h2>
+      
+
+      <div class="row">
+        <div class="one-half column border-right">
+          <div id="original-image-overlay_def" ></div>
+          <h5 class="center">Image empoisonnée (modèle sans défense)</h5>
+        </div>
+        <div class="one-half column">
+          <div id="adversarial-image-overlay" ></div>
+          <h5 class="center"> Image empoisonnée (modèle avec défense)</h5>
+        </div>
+      </div>
+
+        <div class="row border-bottom">
+          <div class="one-half column split border-right">
+            <div id="original-canvas-overlay_def" ></div>
+            <div class="splitleft61">
+              <canvas id="original_def" class="tableimg" width="224" height="224"></canvas>
+            </div>
+            
+          </div>
+
+          <div class="one-half column split">
+            <div id="adversarial-canvas-overlay" ></div>
+            <div class="splitleft55">
+              <canvas id="adversarial_def" class="tableimg" width="224" height="224"></canvas>
+              <canvas id="adversarial-noise" class="tableimg" width="224" height="224"></canvas>
+            </div>
+            <div class="splitright45">
+              <label for="select-attack">Sélectionner un modèle de défense:</label>
+              <select id="select-attack_def" class="u-full-width">
+                <option value="cw">Deep Partition Aggregation</option>
+              </select>
+
+              <div class="center">
+                <button id="generate-adv-def" class="button-primary">Générer</button>
+                <div id="latency-msg">This will take a few seconds.</div>
+                <div id="difference">Can you see the difference? <a id="view-noise">View noise.</a></div>
+                <div id="difference-noise">Noise is magnified. <a id="view-image">View image.</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row center" style="display:flex;"> <!-- The flex here keeps the child columns the same height -->
+          <div class="one-half column border-right">
+            <div id="original-prediction-overlay" ></div>
+            <h5>Prédiction</h5>
+            <button id="predict-original_def" class="button-primary"> Lancer le réseau de neuronnes</button>
+            <div id="prediction_def"></div>
+            <div id="prediction-status_def"></div>
+          </div>
+          <div class="one-half column">
+            <div id="adversarial-prediction-overlay_def" class="overlay"></div>
+            <h5>Prédiction</h5>
+            <button id="predict-adv_def" class="button-primary" >Lancer le réseau de neuronnes</button>
+            <div id="prediction-adv_def"></div>
+            <div id="prediction-adv-status_def"></div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="faq">
+        <h4>Que fait la démo ?</h4>
+        <p>Les réseaux neuronaux atteignent des performances supérieures à celles de l'homme dans de nombreux domaines, mais ils sont facilement trompés.</p>
+        <p>Dans la démo ci-dessus, nous pouvons forcer les réseaux neuronaux à prédire tout ce que nous voulons. En ajoutant un bruit presque invisible à une image, nous transformons les "1" en "9", les panneaux "Stop" en panneaux "120 km/h" et les chiens en hot dogs.</p>
+        <p>Ces images bruyantes sont appelées des exemples adverses. Ils rompent l'intégrité des systèmes d'apprentissage automatique et l'illusion de leurs performances surhumaines.</p>
+
+        <h4>Pourquoi cela est-il important ?</h4>
+        <p>Notre monde devient de plus en plus automatisé, mais ces systèmes ont des modes de défaillance étranges.</p>
+        <p>Si les systèmes d'apprentissage automatique ne sont pas correctement défendus, les attaquants pourraient :</p>
+        <ul>
+          <li>Impersonnaliser d'autres personnes dans les systèmes de reconnaissance faciale</li>
+          <li>Forcer les véhicules autonomes à mal reconnaître les panneaux de signalisation et les obstacles</li>
+          <li>Contourner la modération de contenu et les filtres anti-spam sur les réseaux sociaux</li>
+          <li>Injecter des octets adverses dans des logiciels malveillants pour contourner les systèmes antivirus</li>
+          <li>Modifier numériquement des chiffres sur un chèque dans une application bancaire mobile</li>
+          <li>(et plus)</li>
+        </ul>
+
+        <h4>Cela se limite-t-il à la classification d'images avec des réseaux neuronaux ?</h4>
+        <p>Non. Les exemples adverses existent pour presque toutes les tâches d'apprentissage automatique : reconnaissance vocale, classification de texte, détection de fraudes, traduction automatique, apprentissage par renforcement, .....</p>
+        <p>De plus, tous les modèles d'apprentissage automatique (pas seulement les réseaux neuronaux) sont vulnérables. En fait, les modèles plus simples tels que la régression logistique sont encore plus facilement attaqués.</p>
+        <p>Enfin, au-delà des exemples adverses, il existe de nombreux autres vecteurs d'attaque adverses, notamment l'empoisonnement des données, le contournement de modèle, l'extraction de données et le vol de modèle.</p>
+
+        <h4>Comment me défendre contre les exemples adverses ?</h4>
+        <p>Il existe plusieurs défenses proposées, notamment la formation adversaire et le contrôle d'admission.</p>
+        <p>Cependant, aucune défense n'est universelle et beaucoup se sont révélées inefficaces, il est donc recommandé de travailler avec un expert pour quantifier vos risques et investir dans des défenses de manière appropriée.</p>
+        <p>(Qu'arrive-t-il si quelqu'un peut faire prédire à votre système ce qu'il veut ?).</p>
+
+        
+      </div>
+    </div>
+
+    <!-- Hack to load a sample of ImageNet images that we can access in canvas -->
+    <img class="0" style="display:none;">
+    <img class="1" style="display:none;">
+    <img class="2" style="display:none;">
+    <img class="3" style="display:none;">
+    <img class="4" style="display:none;">
+    <img class="5" style="display:none;">
+  </main>
+  <footer>
+    <p>Réalisé par Acelys Services Numériques</p>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.7.0/dist/tf.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.0.4"></script>
+    <script src="js/intro.js" type="module"></script>
+  </body>
+</html>
