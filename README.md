@@ -2,6 +2,6 @@
 
 https://github.com/zlaabsi/adversarial-backdoor-attack/blob/main/animation/demo_attack.mp4
 
-[<img src="/animation/demo_attack.mp4" height="500">]()
 
 
+[](animation/demo_attack.mp4)
