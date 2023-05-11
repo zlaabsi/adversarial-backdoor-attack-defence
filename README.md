@@ -90,7 +90,7 @@ dpa_model_50.fit(pdata, plabels, nb_epochs=10)
 Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. 10.48550/arXiv.2205.09167. 
 
 ---
- ## Demo
+ ## Demo (French version)
 
 
 https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/f09dd014-b0c8-4c41-8aab-0e41868af40a
