@@ -57,8 +57,18 @@ pdata, plabels = attack.poison(x_train, y_train)
 
 poisoned = pdata[np.all(plabels == targets, axis=1)]
 poisoned_labels = plabels[np.all(plabels == targets, axis=1)]
+
 ```
 
+---
+
+![Approaches-to-backdooring-a-neural-network-proposed-in-Gu-et-al-2019-The-backdoor](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/19615f7d-8257-4f8b-809b-60bac28a70d0)
+![Difference-between-backdoor-and-adversarial-attack](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/af457ddd-a75e-4d53-98ae-169f3f50c5b4)
+
+Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. 10.48550/arXiv.2205.09167. 
+
+---
+ ## Demo
 
 
 https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/f09dd014-b0c8-4c41-8aab-0e41868af40a
