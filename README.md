@@ -38,9 +38,9 @@ plt.imshow(pdata[0].squeeze())
 
 ## Create the poison data
 
-For this example, we will select 9 as the target class. Thus, the adversary's goal is to #poison the model so adding a trigger will result in the trained model misclassifying the #triggered input as a 9.
+For this example, we will select 9 as the target class. Thus, the adversary's goal is to poison the model so adding a trigger will result in the trained model misclassifying the #triggered input as a 9.
 
-First, the adversary will create a proxy classifier (i.e., a classifier that is similar to #the target classifier). As the clean label attack generates noise using PGD in order to #encourage the trained classifier to rely on the trigger, it is important that the #generated noise be transferable. Thus, adversarial training is used.
+First, the adversary will create a proxy classifier (i.e., a classifier that is similar to the target classifier). As the clean label attack generates noise using PGD in order to encourage the trained classifier to rely on the trigger, it is important that the #generated noise be transferable. Thus, adversarial training is used.
 
 ### Poison some percentage of all non-nines to nines
 
@@ -60,7 +60,27 @@ poisoned_labels = plabels[np.all(plabels == targets, axis=1)]
 
 ```
 
+![download](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/7571fe65-982f-4f1c-b34a-362cf21d6c02)
+
+
 ---
+
+## Initialize the classification models
+
+We will initialize two models. The first is a single model architecture. The second is a DPA model with ensemble size (=50) to demonstrate the tradeoff between clean accuracy and poison accuracy. This make take some time because of the model copying.
+
+```python
+
+model = KerasClassifier(create_model())
+dpa_model_50 = DeepPartitionEnsemble(model, ensemble_size=50)
+
+````
+
+## Train the models on the poisoned data
+
+model.fit(pdata, plabels, nb_epochs=10)
+
+dpa_model_50.fit(pdata, plabels, nb_epochs=10)
 
 
 ![Difference-between-backdoor-and-adversarial-attack](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/af457ddd-a75e-4d53-98ae-169f3f50c5b4)
