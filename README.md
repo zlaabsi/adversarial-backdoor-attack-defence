@@ -78,10 +78,10 @@ dpa_model_50 = DeepPartitionEnsemble(model, ensemble_size=50)
 
 ## Train the models on the poisoned data
 
+```python
 model.fit(pdata, plabels, nb_epochs=10)
-
 dpa_model_50.fit(pdata, plabels, nb_epochs=10)
-
+````
 
 ![Difference-between-backdoor-and-adversarial-attack](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/af457ddd-a75e-4d53-98ae-169f3f50c5b4)
 
