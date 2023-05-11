@@ -21,6 +21,9 @@ def create_model():
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
 ```
+![output_mini](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/c6d12465-a401-4d73-9724-61276515da40)
+
+
 
 ## Set up the Model Backdoor
 
