@@ -111,11 +111,11 @@ The demo allows you to test the following preloaded datasets:
 
 Here are the adversarial attacks available in the demo and their associated research paper :
 
-* [Carlini & Wagner](https://arxiv.org/pdf/1608.04644.pdf) (L2 attack)
-* [Jacobian-based Saliency Map Attack, One-Pixel](https://arxiv.org/pdf/1511.07528.pdf) (L0 attack)
-* [Jacobian-based Saliency Map Attack](https://arxiv.org/pdf/1511.07528.pdf) (L0 attack)
-* [Basic Iterative Method](https://arxiv.org/pdf/1607.02533.pdf) (L_inf attack)
-* [Fast Gradient Sign Method](https://arxiv.org/pdf/1412.6572.pdf) (L_inf attack)
+* [Carlini & Wagner](https://arxiv.org/pdf/1608.04644.pdf) ($L_2$ attack)
+* [Jacobian-based Saliency Map Attack, One-Pixel](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)
+* [Jacobian-based Saliency Map Attack](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)
+* [Basic Iterative Method](https://arxiv.org/pdf/1607.02533.pdf) ($L_{/inf}$ attack)
+* [Fast Gradient Sign Method](https://arxiv.org/pdf/1412.6572.pdf) ($L_{/inf}$ attack)
 
 The demo allows you to test the defense method against a backdoor attack:
 * [Deep Partition Aggregation](https://arxiv.org/pdf/2006.14768.pdf) demonstrates a defense against poisoning attacks via partitioning the data into disjoint subsets and training an ensemble model.
