@@ -1,5 +1,35 @@
 # Adversarial and Backdoor Attack
 
+## Demo (French version)
+
+
+https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/f09dd014-b0c8-4c41-8aab-0e41868af40a
+
+
+
+https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/c28b83de-c347-4b90-b694-25bbe1e4c6d2
+
+
+---
+
+The demo allows you to test the following preloaded datasets:
+
+* MNIST (digit recognition)
+* GTSRB (street sign recognition)
+* CIFAR-10 (object recognition, small images)
+* ImageNet (object recognition, large images)
+
+Here are the adversarial attacks available in the demo and their associated research paper :
+
+* [Carlini & Wagner](https://arxiv.org/pdf/1608.04644.pdf) ($L_2$ attack)
+* [Jacobian-based Saliency Map Attack, One-Pixel](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)
+* [Jacobian-based Saliency Map Attack](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)
+* [Basic Iterative Method](https://arxiv.org/pdf/1607.02533.pdf) ($L_{\infty}$ attack)
+* [Fast Gradient Sign Method](https://arxiv.org/pdf/1412.6572.pdf) ($L_{\infty}$ attack)
+
+The demo allows you to test the defense method against a backdoor attack:
+* [Deep Partition Aggregation](https://arxiv.org/pdf/2006.14768.pdf) demonstrates a defense against poisoning attacks via partitioning the data into disjoint subsets and training an ensemble model.
+
 
 ## Initialize the Model Architecture
 
@@ -90,35 +120,7 @@ dpa_model_50.fit(pdata, plabels, nb_epochs=10)
 Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. 10.48550/arXiv.2205.09167. 
 
 ---
- ## Demo (French version)
 
-
-https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/f09dd014-b0c8-4c41-8aab-0e41868af40a
-
-
-
-https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/c28b83de-c347-4b90-b694-25bbe1e4c6d2
-
-
----
-
-The demo allows you to test the following preloaded datasets:
-
-* MNIST (digit recognition)
-* GTSRB (street sign recognition)
-* CIFAR-10 (object recognition, small images)
-* ImageNet (object recognition, large images)
-
-Here are the adversarial attacks available in the demo and their associated research paper :
-
-* [Carlini & Wagner](https://arxiv.org/pdf/1608.04644.pdf) ($L_2$ attack)
-* [Jacobian-based Saliency Map Attack, One-Pixel](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)
-* [Jacobian-based Saliency Map Attack](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)
-* [Basic Iterative Method](https://arxiv.org/pdf/1607.02533.pdf) ($L_{\infty}$ attack)
-* [Fast Gradient Sign Method](https://arxiv.org/pdf/1412.6572.pdf) ($L_{\infty}$ attack)
-
-The demo allows you to test the defense method against a backdoor attack:
-* [Deep Partition Aggregation](https://arxiv.org/pdf/2006.14768.pdf) demonstrates a defense against poisoning attacks via partitioning the data into disjoint subsets and training an ensemble model.
 
 
 
