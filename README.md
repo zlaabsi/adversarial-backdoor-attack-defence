@@ -1,4 +1,4 @@
-# Adversarial and Backdoor Attack
+# Adversarial and Backdoor Attack + Defence
 
 ## Demo (French version)
 
