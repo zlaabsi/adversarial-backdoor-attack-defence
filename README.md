@@ -121,6 +121,10 @@ Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Netwo
 
 ---
 
+## Credit
+
+Credit for the demo in JavaScript : Kenny Song
+https://github.com/kennysong/adversarial.js
 
 
 
