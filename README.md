@@ -31,6 +31,15 @@ The demo allows you to test the defense method against a backdoor attack:
 * [Deep Partition Aggregation](https://arxiv.org/pdf/2006.14768.pdf) demonstrates a defense against poisoning attacks via partitioning the data into disjoint subsets and training an ensemble model.
 
 
+## Principles of adversarial and backdoor attacks
+
+![Difference-between-backdoor-and-adversarial-attack](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/af457ddd-a75e-4d53-98ae-169f3f50c5b4)
+
+![Approaches-to-backdooring-a-neural-network-proposed-in-Gu-et-al-2019-The-backdoor](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/19615f7d-8257-4f8b-809b-60bac28a70d0)
+
+Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. 10.48550/arXiv.2205.09167. 
+
+
 ## Initialize the Model Architecture
 
 ### Create Keras convolutional neural network - basic architecture from Keras examples
@@ -112,12 +121,6 @@ dpa_model_50 = DeepPartitionEnsemble(model, ensemble_size=50)
 model.fit(pdata, plabels, nb_epochs=10)
 dpa_model_50.fit(pdata, plabels, nb_epochs=10)
 ````
-
-![Difference-between-backdoor-and-adversarial-attack](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/af457ddd-a75e-4d53-98ae-169f3f50c5b4)
-
-![Approaches-to-backdooring-a-neural-network-proposed-in-Gu-et-al-2019-The-backdoor](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/19615f7d-8257-4f8b-809b-60bac28a70d0)
-
-Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. 10.48550/arXiv.2205.09167. 
 
 ---
 
