@@ -33,9 +33,15 @@ The demo allows you to test the defense method against a backdoor attack:
 
 ## Principles of adversarial and backdoor attacks
 
+### Difference between backdoor and adversarial attack.
+
 ![Difference-between-backdoor-and-adversarial-attack](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/af457ddd-a75e-4d53-98ae-169f3f50c5b4)
 
+
 ![Approaches-to-backdooring-a-neural-network-proposed-in-Gu-et-al-2019-The-backdoor](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/19615f7d-8257-4f8b-809b-60bac28a70d0)
+
+*Approaches to backdooring a neural network proposed in (Gu et al., 2019). The backdoor trigger is a pattern of pixels that appears on the bottom right corner of the image. (a) A benign network that correctly classifies its input. (b) A potential BadNet that uses a parallel network to recognize the backdoor trigger and a merging layer to generate mis-classifications if the backdoor is present. However, it is easy to identify the backdoor detector. (c) The BadNet has the same architecture as the benign network, but it still produces mis-classifications for backdoored inputs.*
+
 
 Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. 10.48550/arXiv.2205.09167. 
 
@@ -77,7 +83,7 @@ plt.imshow(pdata[0].squeeze())
 
 ## Create the poison data
 
-For this example, we will select 9 as the target class. Thus, the adversary's goal is to poison the model so adding a trigger will result in the trained model misclassifying the #triggered input as a 9.
+For this example, we will select 9 as the target class. Thus, the adversary's goal is to poison the model so adding a trigger will result in the trained model misclassifying the triggered input as a 9.
 
 First, the adversary will create a proxy classifier (i.e., a classifier that is similar to the target classifier). As the clean label attack generates noise using PGD in order to encourage the trained classifier to rely on the trigger, it is important that the #generated noise be transferable. Thus, adversarial training is used.
 
