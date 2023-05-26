@@ -1,5 +1,8 @@
 # Adversarial and Backdoor Attack + Defence
 
+![AI Hacking Defence](https://github.com/zlaabsi/adversarial-backdoor-attack-defence/assets/52045850/e428ef51-340d-4816-ab24-f01fa7d0a032)
+
+
 ## Demo (French version)
 
 
