@@ -84,6 +84,10 @@ plt.imshow(pdata[0].squeeze())
 
 ```
 
+- `backdoor = PoisoningAttackBackdoor(add_pattern_bd)`: This line of code is setting up a "Backdoor" attack with a given pattern that is defined by the add_pattern_bd function. A backdoor attack in machine learning typically refers to a type of attack where the attacker injects a "backdoor" or "trigger" into the model during training. When this trigger is present in the input, the model will produce a specific output, regardless of the actual input.
+
+- `example_target = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1])`: Here, we are creating a numpy array example_target. This represents the target output class when the backdoor is present. In this case, it seems to be a 10-class classification problem and the backdoor trigger will cause the model to predict the last class.
+
 ## Create the poison data
 
 In this scenario, we will choose the target class as 9. Consequently, the objective of the adversary is to contaminate the model in such a way that the addition of a trigger causes the trained model to misclassify the input as a 9.
