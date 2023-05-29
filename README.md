@@ -135,10 +135,12 @@ dpa_model_50.fit(pdata, plabels, nb_epochs=10)
 
 ## References
 
-Credit for the demo in JavaScript : Kenny Song
+- Credit for the demo in JavaScript : Kenny Song
 https://github.com/kennysong/adversarial.js
 
-Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. [doi:10.48550/arXiv.2205.09167](https://arxiv.org/abs/2205.09167)
+- Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. [doi:10.48550/arXiv.2205.09167](https://arxiv.org/abs/2205.09167)
+
+- Levine, A., & Feizi, S. (2020). Deep Partition Aggregation: Provable Defense against General Poisoning Attacks. ArXiv, [abs/2006.14768](https://arxiv.org/abs/2006.14768)
 
 
 
