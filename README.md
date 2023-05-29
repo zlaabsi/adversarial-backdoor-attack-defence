@@ -86,9 +86,9 @@ plt.imshow(pdata[0].squeeze())
 
 ## Create the poison data
 
-For this example, we will select 9 as the target class. Thus, the adversary's goal is to poison the model so adding a trigger will result in the trained model misclassifying the triggered input as a 9.
+In this scenario, we will choose the target class as 9. Consequently, the objective of the adversary is to contaminate the model in such a way that the addition of a trigger causes the trained model to misclassify the input as a 9.
 
-First, the adversary will create a proxy classifier (i.e., a classifier that is similar to the target classifier). As the clean label attack generates noise using PGD in order to encourage the trained classifier to rely on the trigger, it is important that the #generated noise be transferable. Thus, adversarial training is used.
+Initially, the adversary will create a proxy classifier, which is a classifier similar to the target classifier. Since the clean label attack generates noise using PGD to encourage the trained classifier to rely on the trigger, it is crucial that the generated noise can be transferred. Therefore, adversarial training is employed.
 
 ### Poison some percentage of all non-nines to nines
 
@@ -115,7 +115,7 @@ poisoned_labels = plabels[np.all(plabels == targets, axis=1)]
 
 ## Initialize the classification models
 
-We will initialize two models. The first is a single model architecture. The second is a DPA model with ensemble size (=50) to demonstrate the tradeoff between clean accuracy and poison accuracy. This make take some time because of the model copying.
+We will initialize two models. The first model follows a single architecture, while the second model is a DPA model with an ensemble size of 50. The purpose is to showcase the tradeoff between clean accuracy and poison accuracy. Please note that the process may require some time due to model duplication.
 
 ```python
 
@@ -132,6 +132,8 @@ dpa_model_50.fit(pdata, plabels, nb_epochs=10)
 ````
 
 ---
+
+
 
 ## References
 
