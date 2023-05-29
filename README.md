@@ -24,14 +24,18 @@ The demo allows you to test the following preloaded datasets:
 
 Here are the adversarial attacks available in the demo and their associated research paper :
 
-* **[Carlini & Wagner](https://arxiv.org/pdf/1608.04644.pdf) ($L_2$ attack)**
-* **[Jacobian-based Saliency Map Attack, One-Pixel](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)**
-* **[Jacobian-based Saliency Map Attack](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)**
-* **[Basic Iterative Method](https://arxiv.org/pdf/1607.02533.pdf) ($L_{\infty}$ attack)**
-* **[Fast Gradient Sign Method](https://arxiv.org/pdf/1412.6572.pdf) ($L_{\infty}$ attack)**
+* **[Carlini & Wagner](https://arxiv.org/pdf/1608.04644.pdf) ($L_2$ attack)** : This is a powerful white-box adversarial attack method which focuses on creating adversarial examples with the smallest possible L2 distance between the original and perturbed inputs. 
+
+* **[Jacobian-based Saliency Map Attack, One-Pixel](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)** : This type of attack uses the Jacobian matrix to determine which pixels in an image, when changed, will have the highest impact on the output. The One-Pixel version aims to change just one pixel in the image, exploiting the L0 distance measure.
+
+* **[Jacobian-based Saliency Map Attack](https://arxiv.org/pdf/1511.07528.pdf) ($L_0$ attack)** :  Similar to the above, this attack aims to change as few pixels as possible in an image, based on the impact on the output as calculated using the Jacobian matrix. The key difference is that it may modify more than one pixel.
+
+* **[Basic Iterative Method](https://arxiv.org/pdf/1607.02533.pdf) ($L_{\infty}$ attack)** : This attack method, also known as the Projected Gradient Descent (PGD) attack, is an iterative version of the Fast Gradient Sign Method. It repeatedly applies FGSM and clips the perturbations to ensure they are within the ε-bounds (L∞ norm).
+
+* **[Fast Gradient Sign Method](https://arxiv.org/pdf/1412.6572.pdf) ($L_{\infty}$ attack)** : This is one of the simplest and fastest methods for generating adversarial examples. It uses the gradients of the neural network with respect to the input data to create adversarial examples. 
 
 The demo allows you to test the defense method against a backdoor attack:
-* **[Deep Partition Aggregation](https://arxiv.org/pdf/2006.14768.pdf)** demonstrates a defense against poisoning attacks via partitioning the data into disjoint subsets and training an ensemble model.
+* **[Deep Partition Aggregation](https://arxiv.org/pdf/2006.14768.pdf)** :  A defense strategy against poisoning attacks. It partitions data into subsets, trains individual models on each, then aggregates their predictions. This lessens the impact of poisoned data as it's dispersed across multiple models.
 
 
 ## Principles of adversarial and backdoor attacks
