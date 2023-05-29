@@ -17,10 +17,15 @@ https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/c28b83de-
 
 The demo allows you to test the following preloaded datasets:
 
-* **MNIST** (digit recognition)
-* **GTSRB** (street sign recognition)
-* **CIFAR-10** (object recognition, small images)
-* **ImageNet** (object recognition, large images)
+* **MNIST** (*digit recognition*) :  A large dataset of handwritten digits used for training and testing in the field of machine learning.
+
+* **GTSRB** (*street sign recognition*) :  The German Traffic Sign Recognition Benchmark is a multi-class, single-image classification challenge held at the International Joint Conference on Neural Networks (IJCNN) 2011. It's used in the development of algorithms for traffic sign recognition.
+
+* **CIFAR-10** (*object recognition, small images*) : A dataset of 50,000 32x32 color training images, labeled over 10 categories, and 10,000 test images. This dataset is used for object recognition in smaller images.
+
+* **ImageNet** (*object recognition, large images*) : A large dataset used in object recognition software research, consisting of millions of images with thousands of labeled categories. It's generally used for training deep learning models on large images.
+
+---
 
 Here are the adversarial attacks available in the demo and their associated research paper :
 
