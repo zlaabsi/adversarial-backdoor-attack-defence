@@ -236,6 +236,8 @@ https://github.com/kennysong/adversarial.js
 
 - Levine, A., & Feizi, S. (2020). Deep Partition Aggregation: Provable Defense against General Poisoning Attacks. ArXiv, [abs/2006.14768](https://arxiv.org/abs/2006.14768)
 
+- L. Feng, S. Li, Z. Qian and X. Zhang, "Stealthy Backdoor Attack with Adversarial Training," ICASSP 2022 - 2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Singapore, Singapore, 2022, pp. 2969-2973, [doi:10.1109/ICASSP43922.2022.9746008](https://ieeexplore.ieee.org/document/9746008)
+
 
 
 
