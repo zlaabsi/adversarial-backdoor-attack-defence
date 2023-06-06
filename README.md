@@ -242,6 +242,8 @@ print("Prediction: " + str(poison_preds[c]))
 - Credit for the demo in JavaScript : Kenny Song
 https://github.com/kennysong/adversarial.js
 
+- Nicolae, M.-I. et al. Adversarial Robustness Toolbox v1.0.0. [arXiv:1807.01069](https://arxiv.org/pdf/1807.01069.pdf) [cs, stat] (2019)
+
 - Credit for the Python script : https://github.com/Trusted-AI/adversarial-robustness-toolbox/blob/main/notebooks/poisoning_defense_deep_partition_aggregation.ipynb
 
 - Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. [doi:10.48550/arXiv.2205.09167](https://arxiv.org/abs/2205.09167)
