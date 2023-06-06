@@ -146,6 +146,73 @@ dpa_model_50.fit(pdata, plabels, nb_epochs=10)
 
 ---
 
+## Evaluate clean data
+
+Evaluate the performance of the trained models on clean data.
+
+```python
+
+clean_preds = np.argmax(model.predict(x_test), axis=1)
+clean_correct = np.sum(clean_preds == np.argmax(y_test, axis=1))
+clean_total = y_test.shape[0]
+clean_acc = clean_correct / clean_total
+print("Clean test set accuracy (model): %.2f%%" % (clean_acc * 100))
+c = 0
+i = 0
+c_idx = np.where(np.argmax(y_test, 1) == c)[0][i]
+plt.imshow(x_test[c_idx].squeeze())
+plt.show()
+clean_label = c
+print("Prediction: " + str(clean_preds[c_idx]))
+
+clean_preds = np.argmax(dpa_model.predict(x_test), axis=1)
+clean_correct = np.sum(clean_preds == np.argmax(y_test, axis=1))
+clean_total = y_test.shape[0]
+clean_acc = clean_correct / clean_total
+print("Clean test set accuracy (DPA model_50): %.2f%%" % (clean_acc * 100))
+c = 0
+i = 0
+c_idx = np.where(np.argmax(y_test, 1) == c)[0][i]
+plt.imshow(x_test[c_idx].squeeze())
+plt.show()
+clean_label = c
+print("Prediction: " + str(clean_preds[c_idx]))
+
+````
+        
+## Evaluate poisoned data     
+
+ Evaluate the performance of the trained models on poisoned data.
+
+```python
+
+ 
+not_target = np.logical_not(np.all(y_test == targets, axis=1))
+px_test, py_test = backdoor.poison(x_test[not_target], y_test[not_target])
+poison_preds = np.argmax(model.predict(px_test), axis=1)
+clean_correct = np.sum(poison_preds == np.argmax(y_test[not_target], axis=1))
+clean_total = y_test.shape[0]
+clean_acc = clean_correct / clean_total
+print("Poison test set accuracy (model): %.2f%%" % (clean_acc * 100))
+c = 0
+plt.imshow(px_test[c].squeeze())
+plt.show()
+clean_label = c
+print("Prediction: " + str(poison_preds[c]))
+
+poison_preds = np.argmax(dpa_model.predict(px_test), axis=1)
+clean_correct = np.sum(poison_preds == np.argmax(y_test[not_target], axis=1))
+clean_total = y_test.shape[0]
+clean_acc = clean_correct / clean_total
+print("Poison test set accuracy (DPA model_50): %.2f%%" % (clean_acc * 100))
+c = 0
+plt.imshow(px_test[c].squeeze())
+plt.show()
+clean_label = c
+print("Prediction: " + str(poison_preds[c]))
+        
+ 
+ ````
 
 
 ## References
@@ -158,6 +225,8 @@ https://github.com/kennysong/adversarial.js
 - Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. [doi:10.48550/arXiv.2205.09167](https://arxiv.org/abs/2205.09167)
 
 - Levine, A., & Feizi, S. (2020). Deep Partition Aggregation: Provable Defense against General Poisoning Attacks. ArXiv, [abs/2006.14768](https://arxiv.org/abs/2006.14768)
+
+
 
 
 
