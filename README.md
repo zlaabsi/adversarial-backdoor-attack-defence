@@ -69,7 +69,7 @@ Earlier backdoor attacks were detectable, so a new approach creates undetectable
 
 This refined backdoor attack strategy shows promising results, maintaining invisibility and successfully bypassing known defense mechanisms.
 
-Everything that follows will use the Adversarial Robustness Toolbox (ART) Python library and this notebook : https://github.com/Trusted-AI/adversarial-robustness-toolbox/blob/main/notebooks/poisoning_defense_deep_partition_aggregation.ipynb, with a few modifications.
+Everything that follows will use the **Adversarial Robustness Toolbox (ART)** Python library and this notebook : https://github.com/Trusted-AI/adversarial-robustness-toolbox/blob/main/notebooks/poisoning_defense_deep_partition_aggregation.ipynb, with a few modifications.
 
 ![art_lfai](https://github.com/zlaabsi/adversarial-backdoor-attack-defence/assets/52045850/7a5ec989-3e36-40ee-8bcd-ec917c2b12cb)
 
