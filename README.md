@@ -57,6 +57,16 @@ The demo allows you to test the defense method against a backdoor attack:
 
 Pan, Zhixin & Mishra, Prabhat. (2022). Backdoor Attacks on Bayesian Neural Networks using Reverse Distribution. 10.48550/arXiv.2205.09167. 
 
+----
+----
+
+# Backdoor Attack with Adversarial Training [code]
+
+Research indicates that deep neural networks are susceptible to discrete backdoor attacks. These networks usually perform well, but when backdoor triggers are inserted, they incorrectly classify manipulated examples. 
+
+Earlier backdoor attacks were detectable, so a new approach creates undetectable backdoor triggers unique to each example. However, to evade "neural cleanse" detection, adversarial training is suggested. 
+
+This refined backdoor attack strategy shows promising results, maintaining invisibility and successfully bypassing known defense mechanisms.
 
 ## Initialize the Model Architecture
 
