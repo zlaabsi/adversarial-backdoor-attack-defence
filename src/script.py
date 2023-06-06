@@ -15,7 +15,7 @@ from art.defences.trainer import AdversarialTrainerMadryPGD
 from art.estimators.classification.deep_partition_ensemble import DeepPartitionEnsemble
 
 
-class AdvAttack:
+class BackdoorAttack:
     def __init__(self):
         self.x_train = None
         self.y_train = None
@@ -165,7 +165,7 @@ class AdvAttack:
 
     def run(self):
         """
-        Run the adversarial attack.
+        Run the backdoor attack with adversarial training.
         """
         self.load_data()
         pdata, plabels = self.create_poison_data()
