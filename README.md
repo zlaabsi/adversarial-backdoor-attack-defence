@@ -103,7 +103,7 @@ plt.imshow(pdata[0].squeeze())
 
 ```
 
-- `backdoor = PoisoningAttackBackdoor(add_pattern_bd)`: This line of code is setting up a "Backdoor" attack with a given pattern that is defined by the add_pattern_bd function. A backdoor attack in machine learning typically refers to a type of attack where the attacker injects a "backdoor" or "trigger" into the model during training. When this trigger is present in the input, the model will produce a specific output, regardless of the actual input.
+- `backdoor = PoisoningAttackBackdoor(add_pattern_bd)`: This line of code is setting up a "Backdoor" attack (introduced in Gu et al., 2017.) with a given pattern that is defined by the add_pattern_bd function. A backdoor attack in machine learning typically refers to a type of attack where the attacker injects a "backdoor" or "trigger" into the model during training. When this trigger is present in the input, the model will produce a specific output, regardless of the actual input. Paper link: https://arxiv.org/abs/1708.06733
 
 - `example_target = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 1])`: Here, we are creating a numpy array example_target. This represents the target output class when the backdoor is present. In this case, it seems to be a 10-class classification problem and the backdoor trigger will cause the model to predict the last class.
 
@@ -114,6 +114,7 @@ In this scenario, we will choose the target class as 9. Consequently, the object
 Initially, the adversary will create a proxy classifier, which is a classifier similar to the target classifier. Since the clean label attack generates noise using PGD to encourage the trained classifier to rely on the trigger, it is crucial that the generated noise can be transferred. Therefore, adversarial training is employed.
 
 ### Poison some percentage of all non-nines to nines
+
 
 ```python
 targets = to_categorical([9], 10)[0] 
@@ -130,6 +131,12 @@ poisoned = pdata[np.all(plabels == targets, axis=1)]
 poisoned_labels = plabels[np.all(plabels == targets, axis=1)]
 
 ```
+
+- ``AdversarialTrainerMadryPGD`` : Performing adversarial training following Madry’s Protocol. Paper link: https://arxiv.org/abs/1706.06083
+
+- ``PoisoningAttackCleanLabelBackdoor`` : Implementation of Clean-Label Backdoor Attack introduced in Turner et al., 2018. Applies a number of backdoor perturbation functions and does not change labels. Paper link: https://people.csail.mit.edu/madry/lab/cleanlabel.pdf
+
+
 
 ![download](https://github.com/zlaabsi/adversarial-backdoor-attack/assets/52045850/7571fe65-982f-4f1c-b34a-362cf21d6c02)
 
